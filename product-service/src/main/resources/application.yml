@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/product_ms?useSSL=false
+    username: root
+    password: anhvo1102
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
+
+  application:
+    name: product-service
+  #activeMQ config
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+server:
+  port: 8081
+
+jms:
+  destination:
+    cart-product: 'product'

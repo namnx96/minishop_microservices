@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  cart-service:
+    build: .
+    restart: always
+    ports:
+      - 8082:8082
+    depends_on:
+      - docker_mysql57
+    links:
+      - docker_mysql57:db
+    environment: # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/cart_ms?useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+      SERVER_PORT: 8082
+  docker_mysql57:
+    image: "mysql:5.7"
+    restart: always
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: cart_ms
+      MYSQL_ROOT_PASSWORD: 123456

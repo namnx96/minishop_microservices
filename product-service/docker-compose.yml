@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  product-service:
+    build: .
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - docker_mysql57
+    links:
+      - docker_mysql57:db
+    environment: # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/product_ms?useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+      SERVER_PORT: 8081
+  docker_mysql57:
+    image: "mysql:5.7"
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: product_ms
+      MYSQL_ROOT_PASSWORD: 123456
