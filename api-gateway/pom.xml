@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.minishop</groupId>
-    <artifactId>api_gateway</artifactId>
+    <artifactId>api-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>api_gateway</name>
+    <name>api-gateway</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>

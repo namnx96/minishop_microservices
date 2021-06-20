@@ -4,7 +4,6 @@ spring:
     url: jdbc:mysql://localhost:3306/product_ms?useSSL=false
     username: root
     password: 123456
-    initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: update
@@ -13,6 +12,10 @@ spring:
 
   application:
     name: product-service
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
 server:
   port: 8081
 
