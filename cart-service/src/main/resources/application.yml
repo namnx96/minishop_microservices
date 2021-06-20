@@ -12,6 +12,9 @@ spring:
 
   application:
     name: cart-service
+  cloud:
+    discovery:
+      enabled: true
 server:
   port: 8083
 
@@ -19,6 +22,8 @@ server:
 eureka:
   instance:
     appname: ${spring.application.name}
+    hostname: localhost
+    prefer-ip-address: true
   client:
     fetch-registry: true
     service-url:

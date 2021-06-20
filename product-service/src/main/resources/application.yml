@@ -16,12 +16,17 @@ spring:
     init:
       mode: always
       data-locations: classpath:data.sql
+  cloud:
+    discovery:
+      enabled: true
 server:
   port: 8081
 
 eureka:
   instance:
     appname: ${spring.application.name}
+    hostname: localhost
+    prefer-ip-address: true
   client:
     fetch-registry: true
     service-url:

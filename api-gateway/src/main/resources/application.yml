@@ -17,10 +17,12 @@ spring:
           uri: lb://CART-SERVICE
           predicates:
             - Path=/api/*/carts/**
-
+    discovery:
+      enabled: true
 eureka:
   instance:
     appname: ${spring.application.name}
+    hostname: localhost
   client:
     service-url:
       defaultZone: http://localhost:9000/eureka

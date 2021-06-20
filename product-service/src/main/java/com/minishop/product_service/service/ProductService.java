@@ -23,6 +23,9 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepo;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     public List<ProductEntity> findAllProducts() {
         return productRepo.findAll();
     }
@@ -52,8 +55,7 @@ public class ProductService {
                 .collect(Collectors.toList());
 
 //        String addToCartUrl = "http://localhost:8082/api/v1/carts/add";
-        String addToCartUrl = "http://localhost:8080/api/v1/carts/add";
-        RestTemplate restTemplate = new RestTemplate();
+        String addToCartUrl = "http://cart-service/api/v1/carts/add";
         HttpHeaders headers = new HttpHeaders();
         headers.set("ContentType", MediaType.APPLICATION_JSON_VALUE);
         HttpEntity<List<ProductCartDto>> request = new HttpEntity<>(validProductCartDtos, headers);

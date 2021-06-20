@@ -9,6 +9,7 @@ eureka:
       defaultZone: http://localhost:9000/eureka
 
   instance:
-    hostname: discoveryserver
+    hostname: localhost
+    prefer-ip-address: true
   server:
     renewal-percent-threshold: 0.85
