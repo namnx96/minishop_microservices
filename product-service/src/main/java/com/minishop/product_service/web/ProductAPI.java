@@ -35,15 +35,21 @@ public class ProductAPI {
                 .orElseThrow(() -> new ProductNotFoundException("Product with code [" + code + "] doesn't exist"));
     }
 
+    /**
+     * [
+     *   {
+     *     "productId": 1,
+     *     "quantity": 3
+     *   },
+     *   {
+     *     "productId": 3,
+     *     "quantity": 4
+     *   }
+     * ]
+     * **/
     @PostMapping("/addCart")
-    public ResponseEntity<ProductCartDto> productByCode(@RequestBody @Valid ProductCartDto productCartDto) {
-        Optional<ProductEntity> product = productService.findByCode(productCartDto.getProductCode());
-        if (product.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        productCartDto.setPrice(product.get().getPrice());
-        return productService.addToCart(productCartDto)
-                .map(ResponseEntity::ok)
-                .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
+    public ResponseEntity<Boolean> addToCart(@RequestBody List<ProductCartDto> productCartDtos) {
+        boolean isSuccess = productService.addToCart(productCartDtos);
+        return ResponseEntity.ok(isSuccess);
     }
 }

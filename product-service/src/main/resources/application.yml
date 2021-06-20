@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/product_ms?useSSL=false
     username: root
-    password: anhvo1102
+    password: 123456
     initialization-mode: always
   jpa:
     hibernate:
@@ -13,14 +13,14 @@ spring:
 
   application:
     name: product-service
-  #activeMQ config
-  activemq:
-    broker-url: tcp://localhost:61616
-    user: admin
-    password: admin
 server:
   port: 8081
 
-jms:
-  destination:
-    cart-product: 'product'
+eureka:
+  instance:
+    appname: ${spring.application.name}
+  client:
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka
+#    enabled: false

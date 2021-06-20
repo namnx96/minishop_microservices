@@ -13,7 +13,11 @@ public class CartEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_id", nullable = false)
+    @Column(name = "product_id")
     private Long productId;
     private int quantity;
+
+    private double price;
+    @Transient
+    private String productName;
 }

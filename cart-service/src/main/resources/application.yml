@@ -13,5 +13,14 @@ spring:
   application:
     name: cart-service
 server:
-  port: 8082
+  port: 8083
 
+
+eureka:
+  instance:
+    appname: ${spring.application.name}
+  client:
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka
+#    enabled: false

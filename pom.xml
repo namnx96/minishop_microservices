@@ -11,6 +11,8 @@
     <modules>
         <module>cart-service/pom.xml </module>
         <module>product-service/pom.xml </module>
+        <module>discovery-service/pom.xml </module>
+        <module>api-gateway/pom.xml </module>
     </modules>
 
 </project>
